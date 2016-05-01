@@ -78,14 +78,31 @@
         , destroy: function(){
             this.hammer.destroy()
           }
-        }
+        };
+
+        contentDocument = document.getElementById('heart').contentDocument;
+        var updateStrokeWidth = function(newScale) {
+          var paths = contentDocument.getElementsByTagName('path');
+          console.log(paths.length);
+          console.log(newScale);
+
+          for(var i = 0; i < paths.length; i++) {
+            paths[i].style["stroke-width"] = 5.0 / newScale;
+          }
+        };
 
         var panZoomHeart = svgPanZoom('#heart', {
-          maxZoom: 100
+          maxZoom: 1000
+        , controlIconsEnabled: true
+        , zoomScaleSensitivity: .5
         , fit: 1
+        , onZoom: updateStrokeWidth
         , center: 1
         , customEventsHandler: eventsHandler
         });
+
+        // so the stroke doesn't "pop" when we start moving it
+        updateStrokeWidth(1);
       };
     </script>
   </body>
