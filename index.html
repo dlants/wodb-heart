@@ -18,7 +18,9 @@
     <object id="heart" type="image/svg+xml" data="heart.svg"></object>
     <script>
       window.onload = function() {
-        var panZoomHeart = svgPanZoom('#heart');
+        var panZoomHeart = svgPanZoom('#heart', {
+          maxZoom: 100
+        });
       };
     </script>
   </body>
