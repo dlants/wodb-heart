@@ -83,8 +83,6 @@
         contentDocument = document.getElementById('heart').contentDocument;
         var updateStrokeWidth = function(newScale) {
           var paths = contentDocument.getElementsByTagName('path');
-          console.log(paths.length);
-          console.log(newScale);
 
           for(var i = 0; i < paths.length; i++) {
             paths[i].style["stroke-width"] = 5.0 / newScale;
